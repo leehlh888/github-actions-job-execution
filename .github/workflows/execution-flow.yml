@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-// jobs 'lint' and 'test' are running in parallel  
+# jobs 'lint' and 'test' are running in parallel  
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -34,9 +34,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Test code
+        id: run-tests
         run: npm run test
 # upload test report, which outputFile defined in vite.config.js: test.json
       - name: Upload test report
+# check npm run test success or not
+# failure(): ensure it stills run even the previous step failed
+        if: failure() && steps.run-tests.outcome == 'failure'        
         uses: actions/upload-artifact@v3
         with:
           name: test-report
