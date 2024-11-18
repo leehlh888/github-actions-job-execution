@@ -58,7 +58,7 @@ jobs:
         id: build-website
         run: npm run build
       - name: test111
-        run: ls -l
+        run: ls -lR
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
