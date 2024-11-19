@@ -8,6 +8,7 @@ jobs:
       matrix: 
         node-version: [12,14,16]
         operating-system: [ubuntu-latest, windows-latest]
+# include additional combination        
         include: 
           - node-version: 18
             operating-system: ubuntu-latest
