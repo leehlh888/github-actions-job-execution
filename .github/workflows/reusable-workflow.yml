@@ -15,6 +15,6 @@ jobs:
       - name: download artifacts
         uses: actions/download-artifact@v3
         with:
-          name: ${{artifact-name}}  
+          name: ${{inputs.artifact-name}}  
       - name: output info
         run: echo 'output info'
