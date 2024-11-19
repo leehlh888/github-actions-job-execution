@@ -2,6 +2,8 @@ name: Matrix deployment
 on: push
 jobs:
   build:
+# even 1 matrix failed, continue others    
+    continue-on-error: true
     strategy:
       matrix: 
         node-version: [12,14,16]
