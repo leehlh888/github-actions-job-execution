@@ -81,10 +81,12 @@ jobs:
         with:
           name: dist-files
           path: dist
-# call another workflow          
+# call another workflow, pass param = (dist-files)
   deploy:
     needs: build
     uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      artifact-name: dist-files
   report:
       needs: [lint, deploy] # if any of the jobs inside [] failed, will trigger this job
       if: failure()
