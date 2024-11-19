@@ -1,4 +1,4 @@
-name: Website Deployment
+name: Call Reusable Workflow
 on:
   push:
     branches:
@@ -81,18 +81,10 @@ jobs:
         with:
           name: dist-files
           path: dist
+# call another workflow          
   deploy:
     needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: dist-files
-      - name: Output contents
-        run: ls
-      - name: Deploy
-        run: echo "Deploying..."
+    uses: .github/workflows/reusable-workflow.yml
   report:
       needs: [lint, deploy] # if any of the jobs inside [] failed, will trigger this job
       if: failure()
