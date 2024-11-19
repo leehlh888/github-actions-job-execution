@@ -16,5 +16,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{inputs.artifact-name}}  
+      - name: list files
+        run: ls
       - name: output info
         run: echo 'output info'
