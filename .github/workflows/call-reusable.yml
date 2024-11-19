@@ -84,7 +84,7 @@ jobs:
 # call another workflow          
   deploy:
     needs: build
-    uses: .github/workflows/reusable-workflow.yml
+    uses: ./.github/workflows/reusable-workflow.yml
   report:
       needs: [lint, deploy] # if any of the jobs inside [] failed, will trigger this job
       if: failure()
